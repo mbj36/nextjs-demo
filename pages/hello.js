@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Link from 'next/link'
 
 class Users extends Component {
   static async getInitialProps({ req }) {
@@ -13,10 +12,7 @@ class Users extends Component {
   render() {
     return (
       <div>
-        {this.props.AllUsers.map(user => <li key={user._id}>{user.name}</li>)}
-        <Link href="/hello">
-          <p>Hello</p>
-        </Link>
+        {this.props.AllUsers.map(user => <li key={user._id}>{user.age}</li>)}
       </div>
     )
   }
