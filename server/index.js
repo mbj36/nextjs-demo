@@ -3,7 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import next from 'next'
 import morgan from 'morgan'
-import router from './routes/index'
+import routes from './routes/index'
 import connect from './db'
 const port = 3000
 const env = 'development'
@@ -11,11 +11,12 @@ const dev = env !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+connect()
+
 app
   .prepare()
   .then(() => {
     const server = express()
-    connect()
 
     server.use(morgan('dev')) //Logger
 
@@ -27,10 +28,11 @@ app
 
     server.use(bodyParser.json())
 
+    server.use('/api', routes)
+
     server.get('*', (req, res) => {
       return handle(req, res)
     })
-    server.use('/', router)
 
     server.listen(port, err => {
       if (err) throw err

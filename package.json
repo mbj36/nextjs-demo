@@ -19,9 +19,10 @@
     "next": "^5.0.0",
     "nodemon": "^1.17.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "validator": "^9.4.1"
   },
   "scripts": {
-    "server": "nodemon --exec 'babel-node --presets=es2015,stage-0' --watch 'server/**/*.*' server/index.js"
+    "server": "nodemon -w server --exec \"babel-node server --presets es2015,stage-0\""
   }
 }

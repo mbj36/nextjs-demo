@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Index = () => (
   <div>
     <Link href="/users">
-      <span>Users</span>
+      <p>Users</p>
     </Link>
   </div>
 )
